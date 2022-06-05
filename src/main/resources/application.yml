@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://wmc-database.ckx2hkhqqlgz.us-east-1.rds.amazonaws.com:3306/wmc_database?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: d4a1b2c3
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+  profiles:
+    include:
+      - aws
+      - credentials
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+cloud:
+  aws:
+    stack:
+      auto: false
+
+#logging:
+#  level:
+#    org.hibernate.SQL: debug
+#    org.hibernate.type: trace
