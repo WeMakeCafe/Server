@@ -24,10 +24,6 @@ public class FileController {
 
     private final FileService fileService;
 
-    private String bucketName = "wmc-image";
-
-    private String region = "ap-northeast-2";
-
     private final ReviewImageRepository reviewImageRepository;
 
     private final CafeImageRepository cafeImageRepository;
