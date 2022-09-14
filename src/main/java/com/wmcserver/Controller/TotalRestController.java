@@ -46,12 +46,6 @@ public class TotalRestController {
         return personalRepository.findAll();
     }
 
-    @PostMapping("/personal")
-    public Personal createPersonal(@RequestBody PersonalDto personalDto) {
-        Personal personal = new Personal(personalDto);
-        return personalRepository.save(personal);
-    }
-
     @PutMapping("/personal/{memNum}")
     public Long updatePersonal(@PathVariable Long memNum, @RequestBody PersonalDto personalDto) {
         return personalService.update(memNum, personalDto);

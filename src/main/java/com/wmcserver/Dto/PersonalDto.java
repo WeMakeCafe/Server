@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PersonalDto {
-    private Long memNum;
     private String id;
     private String pwd;
     private String nickName;
@@ -17,5 +16,7 @@ public class PersonalDto {
     private Integer phoneNum;
     private String favorite1;
     private String favorite2;
+    private String personalQuestion;
+    private String personalAnswer;
 }
 

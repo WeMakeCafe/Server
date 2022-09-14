@@ -44,6 +44,10 @@ public class Personal {
     @Column(nullable = false)
     private String profileImageUrl;
 
+    private String personalQuestion;
+
+    private String personalAnswer;
+
     public Personal(PersonalDto personalDto) {
         this.id = personalDto.getId();
         this.pwd = personalDto.getPwd();
@@ -53,6 +57,8 @@ public class Personal {
         this.phoneNum = personalDto.getPhoneNum();
         this.favorite1 = personalDto.getFavorite1();
         this.favorite2 = personalDto.getFavorite2();
+        this.personalQuestion = personalDto.getPersonalQuestion();
+        this.personalAnswer = personalDto.getPersonalAnswer();
     }
 
     public Personal(String id, String pwd, String nickName, Integer grade, String address, Integer phoneNum, String favorite1, String favorite2) {
