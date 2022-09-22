@@ -41,7 +41,6 @@ public class Personal {
     @Column(nullable = false)
     private String favorite2;
 
-    @Column(nullable = false)
     private String profileImageUrl;
 
     private String personalQuestion;
