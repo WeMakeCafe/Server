@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class PersonalService {
 
     private final PersonalRepository personalRepository;
