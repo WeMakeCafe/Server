@@ -38,14 +38,13 @@ public class FileController {
                                    @RequestParam(value="pwd") String pwd,
                                    @RequestParam(value="nickname") String nickName,
                                    @RequestParam(value="grade") Integer grade,
-                                   @RequestParam(value="address") String address,
                                    @RequestParam(value="phoneNum") Integer phoneNum,
                                    @RequestParam(value="favorite1") String favorite1,
                                    @RequestParam(value="favorite2") String favorite2) throws IllegalAccessException {
 
         String fileUrl = fileService.uploadImage(file);
 
-        Personal save = new Personal(id, pwd, nickName, grade, address, phoneNum, favorite1, favorite2);
+        Personal save = new Personal(id, pwd, nickName, grade, phoneNum, favorite1, favorite2);
         save.setProfileImageUrl(fileUrl);
         return save;
     }

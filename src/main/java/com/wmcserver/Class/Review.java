@@ -4,6 +4,7 @@ import com.wmcserver.Dto.ReviewDto;
 import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenerationTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,8 +29,9 @@ public class Review {
     @Column(nullable = false)
     private Integer likeCount;
 
-    @Column(nullable = true)
     private String reviewText;
+
+    private Boolean locationCheck = false;
 
     @CreatedDate
     private LocalDateTime createTime;
@@ -181,11 +183,11 @@ public class Review {
     @Column(nullable = false)
     private Integer studyPoint4;
 
-
     public Review(ReviewDto reviewDto) {
         this.cafeNum = reviewDto.getCafeNum();
         this.likeCount = reviewDto.getLikeCount();
         this.reviewText = reviewDto.getReviewText();
+        this.locationCheck = reviewDto.getLocationCheck();
         this.keyword1 = reviewDto.getKeyword1();
         this.keyword2 = reviewDto.getKeyword2();
         this.keyword3 = reviewDto.getKeyword3();
@@ -243,6 +245,7 @@ public class Review {
     public void update(ReviewDto reviewDto) {
         this.likeCount = reviewDto.getLikeCount();
         this.reviewText = reviewDto.getReviewText();
+        this.locationCheck = reviewDto.getLocationCheck();
         this.keyword1 = reviewDto.getKeyword1();
         this.keyword2 = reviewDto.getKeyword2();
         this.keyword3 = reviewDto.getKeyword3();

@@ -14,6 +14,7 @@ public class ReviewDto {
     private byte[] reviewImage;
     private Integer likeCount;
     private String reviewText;
+    private Boolean locationCheck;
     private Date timestamp;
     private Long keyword1;
     private Long keyword2;

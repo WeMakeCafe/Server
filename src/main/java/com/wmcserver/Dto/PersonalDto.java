@@ -12,7 +12,6 @@ public class PersonalDto {
     private String pwd;
     private String nickName;
     private Integer grade;
-    private String address;
     private Integer phoneNum;
     private String favorite1;
     private String favorite2;
