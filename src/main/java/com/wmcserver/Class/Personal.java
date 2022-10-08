@@ -29,9 +29,6 @@ public class Personal {
     private Integer grade;
 
     @Column(nullable = false)
-    private Integer phoneNum;
-
-    @Column(nullable = false)
     private String favorite1;
 
     @Column(nullable = false)
@@ -43,24 +40,24 @@ public class Personal {
 
     private String personalAnswer;
 
+    private String confirmString;
+
     public Personal(PersonalDto personalDto) {
         this.id = personalDto.getId();
         this.pwd = personalDto.getPwd();
         this.nickName = personalDto.getNickName();
         this.grade = personalDto.getGrade();
-        this.phoneNum = personalDto.getPhoneNum();
         this.favorite1 = personalDto.getFavorite1();
         this.favorite2 = personalDto.getFavorite2();
         this.personalQuestion = personalDto.getPersonalQuestion();
         this.personalAnswer = personalDto.getPersonalAnswer();
     }
 
-    public Personal(String id, String pwd, String nickName, Integer grade, Integer phoneNum, String favorite1, String favorite2) {
+    public Personal(String id, String pwd, String nickName, Integer grade, String favorite1, String favorite2) {
         this.id = id;
         this.pwd = pwd;
         this.nickName = nickName;
         this.grade = grade;
-        this.phoneNum = phoneNum;
         this.favorite1 = favorite1;
         this.favorite2 = favorite2;
     }
@@ -71,12 +68,13 @@ public class Personal {
 
     public void setPwd(String newPW) { this.pwd = newPW; }
 
+    public void setConfirmString(String confirmString) { this.confirmString = confirmString; }
+
     public void update(PersonalDto personalDto) {
         this.id = personalDto.getId();
         this.pwd = personalDto.getPwd();
         this.nickName = personalDto.getNickName();
         this.grade = personalDto.getGrade();
-        this.phoneNum = personalDto.getPhoneNum();
         this.favorite1 = personalDto.getFavorite1();
         this.favorite2 = personalDto.getFavorite2();
     }

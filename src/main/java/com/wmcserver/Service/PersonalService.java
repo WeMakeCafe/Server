@@ -12,6 +12,7 @@ import com.wmcserver.Class.Personal;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -26,16 +27,29 @@ public class PersonalService {
         return personalList.isEmpty();
     }
 
-    //핸드폰 번호 중복확인 - 사용가능: TRUE
-    public Boolean checkPhoneNumberExist(Integer phoneNumber) {
-        List<Personal> personalList = personalRepository.findByPhoneNum(phoneNumber);
-        return personalList.isEmpty();
+    public String createRandomNumber() {
+        String rand = UUID.randomUUID().toString().replaceAll("-", "");
+        rand = rand.substring(0, 10);
+
+        if(!checkRandomNumber(rand))
+            createRandomNumber();
+
+        return rand;
+    }
+
+    public Boolean checkRandomNumber(String randomNumber) {
+        List<Personal> personalList = personalRepository.findByConfirmString(randomNumber);
+        if(personalList.isEmpty())
+            return true;
+        return false;
     }
 
     //회원가입
-    public Long createMember(PersonalDto personalDto) {
+    public String createMember(PersonalDto personalDto) {
         Personal personal = new Personal(personalDto);
-        return personalRepository.save(personal).getMemNum();
+        personal.setConfirmString(createRandomNumber());
+        Personal save = personalRepository.save(personal);
+        return save.getConfirmString();
     }
 
     //로그인
@@ -49,8 +63,8 @@ public class PersonalService {
     }
 
     //아이디 찾기
-    public String findIdByPhoneNumber(Integer phoneNumber) {
-        List<Personal> personalList = personalRepository.findByPhoneNum(phoneNumber);
+    public String findIdByConfirmString(String confirmString) {
+        List<Personal> personalList = personalRepository.findByConfirmString(confirmString);
         Personal personal = personalList.get(0);
         return personal.getId();
     }

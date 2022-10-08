@@ -10,5 +10,5 @@ public interface PersonalRepository extends JpaRepository<Personal, Long> {
 
     List<Personal> findById(String Id);
 
-    List<Personal> findByPhoneNum(Integer phoneNumber);
+    List<Personal> findByConfirmString(String confirmString);
 }

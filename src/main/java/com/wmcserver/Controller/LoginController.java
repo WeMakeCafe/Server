@@ -21,15 +21,9 @@ public class LoginController {
         return personalService.checkIdExist(checkId);
     }
 
-    //핸드폰 번호 중복확인
-    @GetMapping("/check/pn")
-    public Boolean checkPhoneNumberExist(@RequestParam("checkPN") Integer phoneNumber) {
-        return personalService.checkPhoneNumberExist(phoneNumber);
-    }
-
     //회원가입
     @PostMapping("/signup")
-    public Long createPersonal(@RequestBody PersonalDto personalDto) {
+    public String createPersonal(@RequestBody PersonalDto personalDto) {
         return personalService.createMember(personalDto);
     }
 
@@ -41,8 +35,8 @@ public class LoginController {
 
     //아이디 찾기
     @GetMapping("/find/id")
-    public String findIdByPhonenumber(@RequestParam("phoneNumber") Integer phoneNumber) {
-        return personalService.findIdByPhoneNumber(phoneNumber);
+    public String findIdByConfirmString(@RequestParam("confirmString") String confirmString) {
+        return personalService.findIdByConfirmString(confirmString);
     }
 
     //비밀번호 변경 전 개인 확인
